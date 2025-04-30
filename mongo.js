@@ -11,7 +11,7 @@ const url = `mongodb+srv://contactabel321:${password}@cluster0.gl6brir.mongodb.n
 
 mongoose.set("strictQuery", false);
 
-mongoose.connect(url);
+const connect = mongoose.connect(url);
 
 const noteSchema = new mongoose.Schema({
   content: String,
@@ -20,13 +20,13 @@ const noteSchema = new mongoose.Schema({
 
 const Note = mongoose.model("Note", noteSchema);
 
-const note = new Note({
-  content: "Learning MongoDB is fun",
+const newDBNote = new Note({
+  content: "Hi, Happy to Learn Saving to DB",
   important: true,
 });
 
-note.save().then((result) => {
-  console.log("note saved!");
+newDBNote.save().then((result) => {
+  console.log("note saved!", result);
   mongoose.connection.close();
 });
 
